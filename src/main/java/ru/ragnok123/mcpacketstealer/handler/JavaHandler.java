@@ -5,6 +5,7 @@ import java.net.InetSocketAddress;
 import net.novatech.jbprotocol.GameSession;
 import net.novatech.jbprotocol.ProtocolClient;
 import net.novatech.jbprotocol.ServerConnectInfo;
+import net.novatech.jbprotocol.data.SessionData;
 import net.novatech.jbprotocol.java.JavaGameState;
 import net.novatech.jbprotocol.java.JavaProtocol;
 import net.novatech.jbprotocol.java.JavaSession;
@@ -12,7 +13,7 @@ import net.novatech.jbprotocol.listener.ClientListener;
 import net.novatech.jbprotocol.listener.GameListener;
 import net.novatech.jbprotocol.listener.LoginServerListener;
 import net.novatech.jbprotocol.packet.AbstractPacket;
-import net.novatech.jbprotocol.util.SessionData;
+import net.novatech.jbprotocol.util.MessageConsumer;
 import ru.ragnok123.mcpacketstealer.Config;
 import ru.ragnok123.mcpacketstealer.Main;
 
@@ -67,7 +68,20 @@ public class JavaHandler {
 							}
 
 						});
-						client.connectTo(new ServerConnectInfo(new InetSocketAddress(Config.IP, Config.PORT)));
+						client.connectTo(new ServerConnectInfo(new InetSocketAddress(Config.IP, Config.PORT)), new MessageConsumer() {
+
+							@Override
+							public void success() {
+								System.out.println("Connected to " + Config.IP + Config.PORT);
+							}
+
+							@Override
+							public void failed(Throwable t) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+						});
 					}
 					gameSession.sendPacket(packet);
 				}

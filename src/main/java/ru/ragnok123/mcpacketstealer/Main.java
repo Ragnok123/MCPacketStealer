@@ -8,8 +8,9 @@ import net.novatech.jbprotocol.GameSession;
 import net.novatech.jbprotocol.ProtocolClient;
 import net.novatech.jbprotocol.ProtocolServer;
 import net.novatech.jbprotocol.ServerConnectInfo;
+import net.novatech.jbprotocol.data.Pong;
 import net.novatech.jbprotocol.listener.ServerListener;
-import net.novatech.jbprotocol.util.Pong;
+import net.novatech.jbprotocol.util.MessageConsumer;
 
 public class Main {
 	
@@ -45,7 +46,21 @@ public class Main {
 				}
 				
 			});
-			proxy.bind();
+			proxy.bind(new MessageConsumer() {
+
+				@Override
+				public void success() {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void failed(Throwable t) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
 		});
 	}
 	
