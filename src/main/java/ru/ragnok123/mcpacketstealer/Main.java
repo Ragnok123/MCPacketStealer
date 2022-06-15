@@ -7,10 +7,10 @@ import java.util.concurrent.Executors;
 import net.novatech.jbprotocol.GameSession;
 import net.novatech.jbprotocol.ProtocolClient;
 import net.novatech.jbprotocol.ProtocolServer;
-import net.novatech.jbprotocol.ServerConnectInfo;
 import net.novatech.jbprotocol.data.Pong;
 import net.novatech.jbprotocol.listener.ServerListener;
 import net.novatech.jbprotocol.util.MessageConsumer;
+import net.novatech.jbprotocol.util.ServerConnectInfo;
 
 public class Main {
 	
